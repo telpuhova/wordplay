@@ -1,8 +1,11 @@
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
 $(document).ready(function(){
   $("#formOne").submit(function(event) {
     event.preventDefault();
     var sentence = $("#input1").val();
     var words = sentence.split(' ');
+
     // words.forEach(function(word) {
     //   if (word.length >= 3) {
     //     var letters = word.split('');
@@ -24,7 +27,7 @@ $(document).ready(function(){
     var newSentence = words.filter(word => word.length > 2).map(function(word) {
         var letters = word.split('');
         letters.reverse();
-        word = letters.join('');
+        word = letters.reduce(reducer);
         return word;
     });
 
